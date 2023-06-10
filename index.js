@@ -7,6 +7,7 @@ const { userLogger } = require("./middlewares/userLogger");
 const { userValidator } = require("./middlewares/uservalidator");
 const { userRouter } = require("./routes/user.routes");
 
+
 require("dotenv").config();
 const port = process.env.PORT;
 
@@ -18,6 +19,15 @@ app.use(authenticator);
 app.use(userLogger);
 app.use("/user", roleValidator);
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Content-Type, X-Auth-Token, Origin, Authorization"
+  );
+  next();
+});
 app.use("/user", userRouter);
 
 app.listen(port, async () => {
