@@ -25,3 +25,5 @@ Username: ram | Role: admin
 Username: ram | Role: admin
 Username: tiya | Role: admin
 Username: tiya | Role: admin
+Username: gagan | Role: admin
+Username: ram | Role: admin
